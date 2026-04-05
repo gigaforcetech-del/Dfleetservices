@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dfleet Car Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0f0f10;
+      color:#fff;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    section{
+      padding:80px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-size:2.4rem;
+      margin-bottom:10px;
+      font-weight:800;
+    }
+
+    .section-title p{
+      color:#cfcfcf;
+      max-width:700px;
+      margin:auto;
+    }
+
+    /* Navbar */
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(10,10,10,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 0;
+    }
+
+    .logo{
+      font-size:1.8rem;
+      font-weight:800;
+      color:#fff;
+      letter-spacing:1px;
+    }
+
+    .logo span{
+      color:#ff2d2d;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .nav-menu a{
+      color:#f3f3f3;
+      font-weight:500;
+      transition:0.3s ease;
+    }
+
+    .nav-menu a:hover{
+      color:#ff2d2d;
+    }
+
+    .nav-btn{
+      padding:10px 18px;
+      background:#ff2d2d;
+      border-radius:999px;
+      color:#fff;
+      font-weight:600;
+      transition:0.3s ease;
+      box-shadow:0 8px 22px rgba(255,45,45,0.25);
+    }
+
+    .nav-btn:hover{
+      background:#e32020;
+      transform:translateY(-2px);
+    }
+
+    /* Hero */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .hero-subtitle{
+      display:inline-block;
+      background:rgba(255,45,45,0.14);
+      color:#ff6b6b;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:0.9rem;
+      margin-bottom:18px;
+      border:1px solid rgba(255,45,45,0.25);
+    }
+
+    .hero h1{
+      font-size:3.5rem;
+      line-height:1.15;
+      margin-bottom:18px;
+      font-weight:800;
+    }
+
+    .hero h1 span{
+      color:#ff2d2d;
+    }
+
+    .hero p{
+      color:#d8d8d8;
+      font-size:1.05rem;
+      margin-bottom:30px;
+      max-width:600px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 26px;
+      border-radius:999px;
+      font-weight:600;
+      transition:0.3s ease;
+    }
+
+    .btn-primary{
+      background:#ff2d2d;
+      color:#fff;
+      box-shadow:0 10px 24px rgba(255,45,45,0.28);
+    }
+
+    .btn-primary:hover{
+      background:#e32020;
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.25);
+      color:#fff;
+      background:rgba(255,255,255,0.05);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.12);
+      transform:translateY(-3px);
+    }
+
+    /* Top Highlights */
+    .highlights{
+      background:#131315;
+    }
+
+    .highlight-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .highlight-box{
+      background:linear-gradient(180deg,#19191c,#111114);
+      border-radius:22px;
+      padding:28px 24px;
+      text-align:center;
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.35s ease;
+    }
+
+    .highlight-box:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,45,45,0.25);
+    }
+
+    .highlight-box h3{
+      color:#ff4b4b;
+      margin-bottom:10px;
+      font-size:1.3rem;
+    }
+
+    .highlight-box p{
+      color:#d0d0d0;
+    }
+
+    /* Services */
+    .services{
+      background:#0f0f10;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:24px;
+    }
+
+    .service-card{
+      background:linear-gradient(180deg,#19191c,#111114);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.35s ease;
+    }
+
+    .service-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 18px 36px rgba(255,45,45,0.14);
+      border-color:rgba(255,45,45,0.25);
+    }
+
+    .service-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .service-content{
+      padding:24px 22px;
+    }
+
+    .service-icon{
+      width:62px;
+      height:62px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:1.7rem;
+      margin-bottom:18px;
+      background:rgba(255,45,45,0.12);
+      color:#ff4b4b;
+    }
+
+    .service-card h3{
+      margin-bottom:12px;
+      font-size:1.25rem;
+    }
+
+    .service-card p{
+      color:#c2c2c2;
+      font-size:0.96rem;
+    }
+
+    /* Key Features */
+    .features{
+      background:#131315;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .feature-card{
+      background:#171719;
+      padding:28px 24px;
+      border-radius:22px;
+      border-left:4px solid #ff2d2d;
+      box-shadow:0 10px 24px rgba(0,0,0,0.22);
+      transition:0.3s ease;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .feature-card h3{
+      margin-bottom:10px;
+      color:#fff;
+    }
+
+    .feature-card p{
+      color:#d2d2d2;
+    }
+
+    /* About */
+    .about-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .about-image img{
+      border-radius:26px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.35);
+      min-height:400px;
+      object-fit:cover;
+      width:100%;
+    }
+
+    .about-text h2{
+      font-size:2.4rem;
+      margin-bottom:16px;
+    }
+
+    .about-text p{
+      color:#d0d0d0;
+      margin-bottom:16px;
+    }
+
+    .about-points{
+      margin-top:22px;
+      display:grid;
+      gap:12px;
+    }
+
+    .about-points div{
+      background:#171719;
+      padding:14px 16px;
+      border-radius:14px;
+      border-left:4px solid #ff2d2d;
+      color:#e8e8e8;
+    }
+
+    /* Gallery */
+    .gallery{
+      background:#131315;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .gallery-item{
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.35s ease;
+      background:#171719;
+    }
+
+    .gallery-item:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,45,45,0.25);
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      transition:0.4s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.06);
+    }
+
+    /* Brands */
+    .brands{
+      background:#0f0f10;
+    }
+
+    .brand-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:20px;
+    }
+
+    .brand-card{
+      background:#171719;
+      padding:20px 15px;
+      text-align:center;
+      border-radius:18px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.22);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.3s ease;
+    }
+
+    .brand-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(255,45,45,0.25);
+    }
+
+    .brand-card span{
+      font-size:2rem;
+      display:block;
+      margin-bottom:10px;
+    }
+
+    .brand-card h4{
+      font-size:1rem;
+      color:#f2f2f2;
+    }
+
+    /* Contact */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+    }
+
+    .contact-info,
+    .contact-form{
+      background:#171719;
+      border-radius:24px;
+      padding:32px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .contact-info h3,
+    .contact-form h3{
+      font-size:1.7rem;
+      margin-bottom:16px;
+    }
+
+    .contact-info p{
+      color:#cfcfcf;
+      margin-bottom:14px;
+    }
+
+    .info-box{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .info-item{
+      background:#1e1e22;
+      padding:14px 16px;
+      border-radius:14px;
+      color:#f2f2f2;
+    }
+
+    .contact-form form{
+      display:grid;
+      gap:16px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:14px 16px;
+      background:#111114;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:14px;
+      color:#fff;
+      font-size:0.95rem;
+      outline:none;
+      transition:0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      border-color:rgba(255,45,45,0.6);
+      box-shadow:0 0 0 3px rgba(255,45,45,0.12);
+    }
+
+    .contact-form textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .contact-form button{
+      border:none;
+      cursor:pointer;
+    }
+
+    /* Footer */
+    footer{
+      background:#0b0b0c;
+      padding:26px 0;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-wrap p{
+      color:#c8c8c8;
+      font-size:0.95rem;
+    }
+
+    .social-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .social-links a{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#1a1a1d;
+      color:#fff;
+      font-size:1.1rem;
+      transition:0.3s ease;
+    }
+
+    .social-links a:hover{
+      background:#ff2d2d;
+      transform:translateY(-3px);
+    }
+
+    /* WhatsApp */
+    .whatsapp-float{
+      position:fixed;
+      width:62px;
+      height:62px;
+      bottom:22px;
+      right:22px;
+      border-radius:50%;
+      background:#25D366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 28px rgba(0,0,0,0.35);
+      z-index:999;
+      transition:0.3s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:scale(1.08);
+    }
+
+    .whatsapp-float img{
+      width:34px;
+      height:34px;
+    }
+
+    @media (max-width: 992px){
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .highlight-grid,
+      .feature-grid,
+      .service-grid,
+      .gallery-grid,
+      .brand-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .about-wrap,
+      .contact-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 768px){
+      .nav-content{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      .nav-menu{
+        justify-content:center;
+        gap:14px;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:90px 0;
+      }
+
+      .hero h1{
+        font-size:2.2rem;
+      }
+
+      .section-title h2,
+      .about-text h2{
+        font-size:2rem;
+      }
+
+      .highlight-grid,
+      .feature-grid,
+      .service-grid,
+      .gallery-grid,
+      .brand-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 480px){
+      .hero h1{
+        font-size:1.9rem;
+      }
+
+      .btn{
+        width:100%;
+        text-align:center;
+      }
+
+      .footer-wrap{
+        justify-content:center;
+        text-align:center;
+      }
+
+      .whatsapp-float{
+        width:56px;
+        height:56px;
+        right:16px;
+        bottom:16px;
+      }
+
+      .whatsapp-float img{
+        width:30px;
+        height:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">Dfleet<span>Services</span></a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Photos</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-btn">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-subtitle">Quick Service • Online Help • Call On</span>
+        <h1>Your Car Deserves <span>Expert Service</span></h1>
+        <p>
+          Professional car care with fast support, expert mechanics, and quality work.
+          We are specially known for premium servicing of German vehicles.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Book Service</a>
+          <a href="tel:+91996769884" class="btn btn-secondary">Call Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="container">
+      <div class="highlight-grid">
+        <div class="highlight-box">
+          <h3>Quick Service</h3>
+          <p>Fast turnaround time so your car gets back on road without delay.</p>
+        </div>
+        <div class="highlight-box">
+          <h3>Online Help</h3>
+          <p>Easy support on WhatsApp and phone for instant assistance and booking.</p>
+        </div>
+        <div class="highlight-box">
+          <h3>Call On</h3>
+          <p>Direct calling support for service inquiries, emergency guidance, and appointments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Complete maintenance and repair solutions for all types of cars.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=80" alt="Car Wash">
+          <div class="service-content">
+            <div class="service-icon">🚘</div>
+            <h3>Basic Car Services</h3>
+            <p>Engine oil change,Oil filter & air filter replacement,Car washing & detailing,Battery check or replacement,AC service (gas refill, cooling check).</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1613214150384-df7b8d3bdfb8?auto=format&fit=crop&w=1200&q=80" alt="Engine Repair">
+          <div class="service-content">
+            <div class="service-icon">🔧</div>
+            <h3>Engine Repair</h3>
+            <p>Advanced diagnostics and professional repair for better engine performance.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1632823471565-1ecdf4f6e9d8?auto=format&fit=crop&w=1200&q=80" alt="Oil Change">
+          <div class="service-content">
+            <div class="service-icon">🛢️</div>
+            <h3>Oil Change</h3>
+            <p>Quality oil replacement to protect the engine and improve smoothness.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1486496146582-9ffcd0b2b2b7?auto=format&fit=crop&w=1200&q=80" alt="AC Service">
+          <div class="service-content">
+            <div class="service-icon">❄️</div>
+            <h3>AC Service</h3>
+            <p>Complete AC checkup, cooling repair, and gas refill service.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Key Features</h2>
+        <p>Why customers trust us for their vehicle servicing and repair needs.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>One Stop Solution</h3>
+          <p>From general servicing to repairs, diagnostics, washing, and support — all under one roof.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Experienced Mechanic</h3>
+          <p>Our trained and experienced mechanics handle every vehicle with expert care and precision.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Quality Work</h3>
+          <p>We focus on reliable workmanship, premium care, and customer satisfaction every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-wrap">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80" alt="Car workshop">
+      </div>
+
+      <div class="about-text">
+        <h2>Speciality in German Vehicles</h2>
+        <p>
+          We are highly specialised in servicing and repairing German cars with proper tools,
+          careful inspection, and expert mechanical support.
+        </p>
+        <p>
+          Whether it is regular maintenance or premium repair work, we ensure top-quality service
+          for brands like BMW, Mercedes-Benz, Audi, Volkswagen, and Skoda.
+        </p>
+
+        <div class="about-points">
+          <div>✔ Special care for German vehicle systems</div>
+          <div>✔ Experienced team for premium cars</div>
+          <div>✔ Trusted service with quality workmanship</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Workshop Photos</h2>
+        <p>Some premium workshop and service photos for your website look.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Luxury Car">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1200&q=80" alt="Workshop Service">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80" alt="Mechanic Working">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80" alt="Car Detailing">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=1200&q=80" alt="Car Repair Garage">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80" alt="Premium Car Service">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="brands" id="brands">
+    <div class="container">
+      <div class="section-title">
+        <h2>Car Brands We Handle</h2>
+        <p>Popular car brands used in India that we service and support.</p>
+      </div>
+
+      <div class="brand-grid">
+        <div class="brand-card"><span>🚗</span><h4>Maruti Suzuki</h4></div>
+        <div class="brand-card"><span>🚙</span><h4>Hyundai</h4></div>
+        <div class="brand-card"><span>🚘</span><h4>Tata</h4></div>
+        <div class="brand-card"><span>🚖</span><h4>Mahindra</h4></div>
+        <div class="brand-card"><span>🚕</span><h4>Honda</h4></div>
+        <div class="brand-card"><span>🚗</span><h4>Toyota</h4></div>
+        <div class="brand-card"><span>🚙</span><h4>Kia</h4></div>
+        <div class="brand-card"><span>🚘</span><h4>Renault</h4></div>
+        <div class="brand-card"><span>🚖</span><h4>Nissan</h4></div>
+        <div class="brand-card"><span>🚕</span><h4>MG</h4></div>
+        <div class="brand-card"><span>🚗</span><h4>Skoda</h4></div>
+        <div class="brand-card"><span>🚙</span><h4>Volkswagen</h4></div>
+        <div class="brand-card"><span>🚘</span><h4>Audi</h4></div>
+        <div class="brand-card"><span>🚖</span><h4>BMW</h4></div>
+        <div class="brand-card"><span>🚕</span><h4>Mercedes-Benz</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Book your car service today and get fast support from our team.</p>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p>Need help with service booking or vehicle inspection? Contact us now.</p>
+
+          <div class="info-box">
+            <div class="info-item">📍Plot No. 20A, Sector 13, Opp Bank Of India Colony MIDC Industrial Area, Nerul East, Navi Mumbai, Maharashtra 400706</div>
+            <div class="info-item">📞 +91 99676 98884</div>
+            <div class="info-item">✉️ support@dfleetservices.com</div>
+            <div class="info-item">🕒 Mon - Sat: 9:00 AM - 8:00 PM</div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Book a Service</h3>
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <textarea placeholder="Write your message" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 Dfleet services. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="#">f</a>
+        <a href="#">in</a>
+        <a href="#">ig</a>
+        <a href="#">x</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
